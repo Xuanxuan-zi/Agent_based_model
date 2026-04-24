@@ -32,8 +32,8 @@ You need `mesa` and `solara` installed.
 
 Ran both versions with seed 42 for 5000+ steps:
 
-- Original peak Gini: ~0.36
-- Modified peak Gini: ~0.39
+- Original peak Gini: ~0.36()
+- Modified peak Gini: ~0.39()
 - Both settle around 0.28 long-term
 
 So boredom actually made things worse in the short run. My guess for why this happened is in the paper.
