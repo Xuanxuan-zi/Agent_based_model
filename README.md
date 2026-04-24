@@ -1,37 +1,39 @@
-# SugarScape with Boredom Mechanism
+# SugarScape Boredom Mod
 
-Modified version of Epstein and Axtell's SugarScape model. Only `agents.py` was changed.
+My ABM midterm project. Takes the SugarScape model and adds a boredom mechanism to the agents, so they don't always follow the greedy rule.
 
-## What Changed
+## What I did
 
-Added a boredom mechanism to agents. Each agent has a random boredom threshold (5-15 steps). If an agent stays in one location longer than its threshold, it must move to a random neighboring cell instead of following the greedy sugar-seeking behavior.
+In the original model, agents always move to the cell with the most sugar in their vision. I thought this was kind of unrealistic — real people don't always optimize, they get bored and try new things even when there's no good reason to. So I added a boredom counter to each agent. If they stay in one spot for too long, they just move randomly.
 
-The idea is that agents get restless and move even if they're in a good spot, which is more realistic than agents staying forever in one place.
+I wanted to see if this would make the society more equal (lower Gini). Turns out it actually made inequality a bit *higher* at the peak, which I didn't expect. The paper explains why I think that happened.
 
 ## Files
 
-- `agents.py` - **MODIFIED** (added boredom logic to the move() method)
-- `model.py` - unchanged
-- `app.py` - unchanged  
-- `sugar-map.txt` - unchanged
+- `agents.py` — added the boredom stuff here
+- `model.py` — changed a few default parameters so agents live longer (otherwise they die before they have time to get bored lol)
+- `app.py` — didn't touch this
+- `sugar-map.txt` — didn't touch this either
+- `SugarScape_Midterm_Paper.docx` — the paper
 
-## How to Run
+All my changes in the code are marked with `>>> MY MODIFICATION #N <<<` so they're easy to find.
 
-```bash
+## How to run
+
+```
 solara run app.py
 ```
 
-## Results
+Then go to `localhost:8765` in your browser.
 
-The boredom mechanism spreads agents across the map instead of clustering them. But Gini coefficient (inequality) stays the same (0.30) in both versions. 
+You need `mesa` and `solara` installed.
 
-This shows that spatial distribution and inequality are separate things—you can change where agents live without changing how unequal they become. The inequality is determined by metabolism differences, not by clustering.
+## Results (short version)
 
-Basically: forcing people to move around doesn't automatically make them equal.
+Ran both versions with seed 42 for 5000+ steps:
 
-## Key Observation
+- Original peak Gini: ~0.36
+- Modified peak Gini: ~0.39
+- Both settle around 0.28 long-term
 
-- Baseline (no boredom): agents cluster in 2-3 areas, Gini = 0.30
-- Modified (with boredom): agents spread everywhere, Gini = 0.30
-
-Same inequality, different distribution.
+So boredom actually made things worse in the short run. My guess for why this happened is in the paper.
