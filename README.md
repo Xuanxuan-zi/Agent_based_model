@@ -33,7 +33,7 @@ You need `mesa` and `solara` installed.
 Ran both versions with seed 42 for 5000+ steps:
 
 - [Original peak Gini: ~0.36](https://github.com/Xuanxuan-zi/Agent_based_model/blob/main/original%E2%80%94%E2%80%94outcome.png)
-- [Modified peak Gini:] ~0.39(https://github.com/Xuanxuan-zi/Agent_based_model/blob/main/modified%E2%80%94%E2%80%94outcome.png)
+- [Modified peak Gini: ~0.39](https://github.com/Xuanxuan-zi/Agent_based_model/blob/main/modified%E2%80%94%E2%80%94outcome.png)
 - Both settle around 0.28 long-term
 
 So boredom actually made things worse in the short run. My guess for why this happened is in the paper.
